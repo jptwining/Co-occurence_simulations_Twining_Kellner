@@ -1,7 +1,11 @@
 
 # Summary
-Contained within this repository are scripts which organize a review of the literature identifying papers which have applied the Rota et al. 2016 multi-species occupancy model for interacting species. There are also a series of simulation studies, including
-Simulation study 1. a power analyses exploring the prevelance of type M and type S errors in a series of scenarios examining different sampling regimes and underlying parameter values. Simulation study 2. a simulation study exploring the impacts of shared responses to habitat covariates on estimating species interactions. Simulation study 3. a simulation study exploring the impact of extra-pair interactions when estimating species interactions from co-occurence data. Simulation study 4. a simulation study exploring how indirect interactions between species can arise indirectly. 
+Contained within this repository are:
+1. Scripts for a literature view  which organize papers from the scientific literature which have applied the Rota et al. 2016 multi-species occupancy model for interacting species.
+2. Simulation study 1. a power analyses exploring the prevelance of type M and type S errors in a series of scenarios examining different sampling regimes and underlying parameter values for co-occurence models.
+3. Simulation study 2. a simulation study exploring the impacts of shared responses to habitat covariates on estimating species interactions. 
+4. Simulation study 3. a simulation study exploring the impact of extra-pair interactions when estimating species interactions from co-occurence data. 
+5. Simulation study 4. a simulation study exploring how indirect interactions between species can arise indirectly. 
 
 ## The working directory
 

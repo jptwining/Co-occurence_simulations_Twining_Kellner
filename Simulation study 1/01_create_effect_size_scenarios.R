@@ -575,7 +575,7 @@ state_scenarios <- list(
   lowocc_5sp_noeffect = lowocc_5sp_noeffect
 )
 
-det_scenarios <- list(highdet = qlogis(0.6), lowdet = qlogis(0.2))
+det_scenarios <- list(highdet = qlogis(0.6), lowdet = qlogis(0.2), tinydet=qlogis(0.05))
 
 # Save scenarios for use in power simulations
 saveRDS(state_scenarios, "state_scenarios.Rds")

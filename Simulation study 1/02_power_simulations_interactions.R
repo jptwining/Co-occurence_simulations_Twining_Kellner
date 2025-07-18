@@ -33,10 +33,10 @@ get_inputs <- function(species = 2, sites = 50, occasions = 5){
 get_effect_size <- function(species = 2, psi = 0.2, p = 0.2, effectsize = 0){
   stopifnot(species %in% c(2,3,5))
   stopifnot(psi %in% c(0.2, 0.6))
-  stopifnot(p %in% c(0.2, 0.6))
+  stopifnot(p %in% c(0.05, 0.2, 0.6))
   stopifnot(effectsize %in% c(0, 0.1, 0.25))
   psi <- ifelse(psi == 0.2, "low", "high")
-  p <- ifelse(p == 0.2, "lowdet", "highdet")
+  p <- ifelse(p == 0.2, "lowdet", ifelse(p == 0.6, "highdet", "tinydet"))
   if(effectsize == 0){
     effectsize <- "noeffect"
   } else if(effectsize == 0.10){
@@ -75,6 +75,7 @@ run_scenario <- function(species = 2, sites = 50, occasions = 5,
 #pa200 <- run_scenario(sites = 200, effectsize=0.1)
 #pa500 <- run_scenario(sites = 500, effectsize=0.1)
 #pa1000 <- run_scenario(sites = 1000, effectsize=0.1)
+#pa_tiny <- run_scenario(sites = 50, effectsize=0.1, p=0.05)
 #pl <- unmarkedPowerList(pa50, pa100, pa200, pa500, pa1000)
 #plot(pl, param="[sp1:sp2] (Intercept)")
 
@@ -85,7 +86,7 @@ scenarios <- expand.grid(species = c(2,3,5),
                 psi = c(0.2, 0.6),
                 p = c(0.2, 0.6),
                 effectsize = c(0, 0.1, 0.25)
-              ) 
+              )
 
 # Don't run this in parallel, Armadillo is doing stuff in parallel at the 
 # same time and it causes hangs
@@ -103,6 +104,34 @@ power_analyses <- lapply(1:nrow(scenarios), function(i){
 
 saveRDS(power_analyses, "power_analyses.Rds")
 power_analyses <- readRDS("power_analyses.Rds")
+
+# p = 0.05 scenarios (additional scenarios requested by reviewer)
+# since we don't end up using the 0 effect size scenarios, they are
+# not included here
+scenarios_p005 <- expand.grid(species = c(2,3,5),
+                    sites = c(50, 100, 200, 500, 1000),
+                    occasions = c(5, 10, 30),
+                    psi = c(0.2, 0.6),
+                    p = 0.05,
+                    effectsize = c(0.1, 0.25)
+                  )
+
+scenarios_p005 <- scenarios_p005[order(scenarios_p005$species),]
+rownames(scenarios_p005) <- NULL
+
+power_analyses_p005 <- lapply(1:nrow(scenarios_p005), function(i){
+  scen <- scenarios_p005[i,]
+  print(scen)
+  run_scenario(species = scen$species,
+               sites = scen$sites,
+               occasions = scen$occasions,
+               psi = scen$psi,
+               p = scen$p,
+               effectsize = scen$effectsize,
+               nsim = 100)
+})
+
+saveRDS(power_analyses_p005, "power_analyses_p005.Rds")
 
 # Figures
 power_est <- lapply(power_analyses, function(x){

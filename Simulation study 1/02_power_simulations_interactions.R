@@ -132,6 +132,8 @@ power_analyses_p005 <- lapply(1:nrow(scenarios_p005), function(i){
 })
 
 saveRDS(power_analyses_p005, "power_analyses_p005.Rds")
+power_analyses_p005 <- readRDS("power_analyses_p005.Rds")
+
 
 # Figures
 power_est <- lapply(power_analyses, function(x){
@@ -141,6 +143,15 @@ power_est <- lapply(power_analyses, function(x){
 power_est <- do.call(rbind, power_est)
 
 power_est <- cbind(scenarios, power_est)
+
+power_est_05 <- lapply(power_analyses_p005, function(x){
+  s <- summary(x)
+  s[s$Parameter == "[sp1:sp2] (Intercept)", c("Power", "Type S", "Type M")]
+})
+power_est_05 <- do.call(rbind, power_est_05)
+power_est_05 <- cbind(scenarios_p005, power_est_05)
+
+power_est <- rbind(power_est, power_est_05)
 
 library(ggplot2)
 library(cowplot)
@@ -253,6 +264,7 @@ pl2_1 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
   theme_bw(base_size=14) +
   theme(panel.grid=element_blank()) +
   ylab("Type M error") +
+  ylim(1, 3.5) +
   ggtitle("Species = 2, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==2,]
@@ -267,6 +279,7 @@ pl2_2 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
   theme_bw(base_size=14) +
   theme(panel.grid=element_blank()) +
   ylab("Type M error") +
+  ylim(1, 3.5) +
   ggtitle("Species = 2, Effect size = 0.25")
 
 png("TypeM_2_species.png", height=9, width=6, units='in', res=300)
@@ -342,3 +355,51 @@ pl5_2 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
 png("TypeM_5_species.png", height=9, width=6, units='in', res=300)
 plot_grid(pl5_1, pl5_2, nrow=2)
 dev.off()
+
+# Examine effect of number of simulations--------------------------------------
+
+# A reviewer noted that 100 simulations per scenario might not be enough to
+# get an accurate estimate of power.
+# To explore this we varied the # of simulations for a few scenarios to see
+# how estimated power and Type M error were affected.
+
+set.seed(123)
+scenarios_nsims <- expand.grid(species = 2, sites = c(200, 500),
+                         occasions = 5, psi = 0.2, p = 0.2,
+                         effectsize = 0.1, sims = c(100, 500, 1000, 5000))
+
+power_analyses_nsims <- lapply(1:nrow(scenarios_nsims), function(i){
+  scen <- scenarios_nsims[i,]
+  print(scen)
+  run_scenario(species = scen$species,
+               sites = scen$sites,
+               occasions = scen$occasions,
+               psi = scen$psi,
+               p = scen$p,
+               effectsize = scen$effectsize,
+               nsim = scen$sims)
+})
+
+saveRDS(power_analyses_nsims, "power_analyses_nsims.Rds")
+power_analyses_nsims <- readRDS("power_analyses_nsims.Rds")
+
+power_est <- lapply(power_analyses_nsims, function(x){
+  s <- summary(x)
+  s[s$Parameter == "[sp1:sp2] (Intercept)", c("Power", "Type S", "Type M")]
+})
+power_est <- do.call(rbind, power_est)
+power_est <- cbind(power_est, scenarios_nsims)
+
+ggplot(data = power_est, aes(x = sims, y = Power)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap("sites")
+
+ggsave("power_vs_nsims.png")
+
+ggplot(data = power_est, aes(x = sims, y = `Type M`)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap("sites")
+
+ggsave("typeM_vs_nsims.png")

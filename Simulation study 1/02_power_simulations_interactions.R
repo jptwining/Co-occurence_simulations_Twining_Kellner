@@ -366,7 +366,7 @@ dev.off()
 set.seed(123)
 scenarios_nsims <- expand.grid(species = 2, sites = c(200, 500),
                          occasions = 5, psi = 0.2, p = 0.2,
-                         effectsize = 0.1, sims = c(100, 500, 1000, 5000))
+                         effectsize = 0.1, sims = c(25, 50, 100, 500, 1000, 5000))
 
 power_analyses_nsims <- lapply(1:nrow(scenarios_nsims), function(i){
   scen <- scenarios_nsims[i,]

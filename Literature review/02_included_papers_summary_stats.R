@@ -26,6 +26,13 @@ median(incl$max_occasions, na.rm=TRUE)
 range(incl$max_occasions, na.rm=TRUE)
 mean(incl$max_occasions < 30, na.rm=TRUE)
 
+# Occasion length
+median(incl$occasion_days, na.rm=TRUE)
+range(incl$occasion_days, na.rm=TRUE)
+table(incl$occasion_days)
+mean(incl$occasion_days == 1, na.rm = TRUE)
+mean(incl$occasion_days == 7, na.rm = TRUE)
+
 # Occupancy estimates
 mean(incl$psi_min, na.rm=TRUE)
 mean(incl$psi_max, na.rm=TRUE)

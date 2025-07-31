@@ -1,57 +1,57 @@
-DOI,Journal,Year,Notes,cameras,max_sites,max_species,max_occasions,psi_min,psi_max,p_min,p_max,int_covs,int_min,int_max,n_int_sig,max_order,min_sites_detect,max_sites_detect,n_overlap_sites
-10.1016/j.biocon.2024.110777,BIOLOGICAL CONSERVATION,2024,ranks not species,1,172,4,11,0.55,0.8,0.1,0.5,1,0,1,3,2,NA,NA,NA
-10.1016/j.gecco.2024.e03180,GLOBAL ECOLOGY AND CONSERVATION,2024,only first survey,1,628,2,7,0.156,0.228,0.176,0.223,0,-1.21,-1.21,0,2,74,97,NA
-10.1016/j.gecco.2024.e03116,GLOBAL ECOLOGY AND CONSERVATION,2024,,1,115,5,13,NA,NA,NA,NA,1,-1,3,4,2,NA,NA,NA
-10.1016/j.gecco.2024.e03017,GLOBAL ECOLOGY AND CONSERVATION,2024,only grazing,1,349,7,13,NA,NA,NA,NA,1,-1.23,0.89,2,2,NA,NA,NA
-10.1007/s11252-024-01581-7,URBAN ECOSYSTEMS,2024,Random by city,1,381,3,4,0.05,0.75,NA,NA,1,-6.79,5.59,6,2,NA,NA,NA
-10.1093/jmammal/gyae045,JOURNAL OF MAMMALOGY,2024,,1,202,3,14,0.4,0.74,NA,NA,1,1.88,1.88,1,2,NA,NA,NA
-10.1111/oik.10577,OIKOS,2024,Twining,1,559,3,21,NA,NA,0.25,0.45,0,0.86,0.86,1,2,NA,NA,NA
-10.1002/wlb3.01197,WILDLIFE BIOLOGY,2024,,0,2325,2,20,NA,NA,NA,NA,1,0.89,0.89,1,2,NA,NA,NA
-10.1002/ece3.10965,ECOLOGY AND EVOLUTION,2024,bad interaction estimate and p estimated from table,1,60,4,122,NA,NA,0.1,0.14,0,8.19,8.19,0,2,30,55,NA
-10.3390/fishes9020043,FISHES,2024,,0,3926,3,NA,0.41,0.42,0.26,0.48,1,NA,NA,3,2,NA,NA,NA
-10.1371/journal.pone.0297053,PLOS ONE,2024,,1,706,3,31,0.14,0.29,0.029,0.075,0,NA,NA,1,2,NA,NA,NA
-10.1016/j.scitotenv.2023.169552,SCIENCE OF THE TOTAL ENVIRONMENT,2024,Avg occasions,1,238,4,90,NA,NA,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1111/acv.12926,ANIMAL CONSERVATION,2024,conditional equation doesn’t make sense?,1,78,3,111,NA,NA,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1002/ece3.10718,ECOLOGY AND EVOLUTION,2023,Kellner,1,105,2,14,NA,NA,0.15,0.16,1,1.07,1.07,1,2,35,71,25
-10.1016/j.jaridenv.2023.105067,JOURNAL OF ARID ENVIRONMENTS,2023,psi estimated from figure,1,78,2,8,0.25,0.75,0.11,0.23,1,NA,NA,NA,2,23,51,NA
-10.1016/j.cub.2023.07.064,CURRENT BIOLOGY,2023,,1,481,7,NA,NA,NA,NA,NA,1,-2.47,1.47,16,2,NA,NA,NA
-10.1111/oik.10270,OIKOS,2023,,0,397,3,4,0.3,0.3,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1111/1365-2656.13976,JOURNAL OF ANIMAL ECOLOGY,2023,Sample size is confusing  180 * 3 yrs?,1,540,3,NA,NA,NA,NA,NA,1,-2.13,6.52,3,2,NA,NA,NA
-10.1002/ece3.10200,ECOLOGY AND EVOLUTION,2023,Species pooled,1,88,3,20,0.19,0.78,0.1,0.5,0,0.33,1.38,2,2,NA,NA,NA
-10.1086/725318,FRESHWATER SCIENCE,2023,P derived from model output,0,125,2,3,NA,NA,0.71,0.89,1,-1.15,-1.15,0,2,NA,NA,NA
-10.1016/j.fooweb.2023.e00288,FOOD WEBS,2023,species pooled,1,95,4,14,NA,NA,0.11,0.76,1,-0.85,1.42,2,2,7,30,NA
-10.1002/ece3.10040,ECOLOGY AND EVOLUTION,2023,,1,97,4,NA,NA,NA,0.1,0.5,1,NA,NA,NA,2,NA,NA,NA
-10.1371/journal.pone.0284850,PLOS ONE,2023,number of sites unclear and calculated as 4 years *24,1,96,2,10,NA,NA,0.1,0.22,1,2.56,2.56,1,2,NA,NA,NA
-10.1002/ecs2.4435,ECOSPHERE,2023,one model per month?,1,117,2,21,NA,NA,NA,NA,1,-1.16,9.55,0,2,NA,NA,NA
-10.1111/1365-2656.13875,JOURNAL OF ANIMAL ECOLOGY,2023,Use marginal and conditional wrong,1,354,4,54,0.25,0.84,0.08,0.24,1,-1.99,2.87,15,4,NA,NA,NA
-10.1002/ecs2.4383,ECOSPHERE,2023,weekly detection periods and numbers are max between two models and used backward selection,1,400,8,52,NA,NA,NA,NA,0,-0.94,1.83,5,2,NA,NA,NA
-10.1093/cz/zoac093,CURRENT ZOOLOGY,2023,Occasions unclear and evidence of bad optimization,1,47,2,NA,NA,NA,NA,NA,0,2.12,2.12,0,2,11,23,NA
-10.1111/csp2.12847,CONSERVATION SCIENCE AND PRACTICE,2022,Had summer and winter models only showing design for one of them,1,117,6,37,NA,NA,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1038/s41598-022-20953-7,SCIENTIFIC REPORTS,2022,confusing design description and equations make no sense and massive optimization issues,1,62,3,7,NA,NA,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1007/s42991-022-00313-8,MAMMALIAN BIOLOGY,2022,multiple separate seasonal models and figure is wrong and weird assumptions in methods and doesn’t report actual model estimates?,1,80,2,18,NA,NA,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1111/jzo.13002,JOURNAL OF ZOOLOGY,2022,Had to check code to determine covariate structure,1,67,3,130,NA,NA,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1007/s10531-022-02445-2,BIODIVERSITY AND CONSERVATION,2022,Summarized data at array level and missing supplements? And not clear how many max species in a model,1,108,6,8,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-10.5751/ACE-02079-170120,AVIAN CONSERVATION AND ECOLOGY,2022,Rota and removal sampling,0,840,3,1,NA,NA,NA,NA,0,-0.21,1.53,1,2,NA,NA,NA
-10.1002/ece3.8921,ECOLOGY AND EVOLUTION,2022,Supposedly used latent state of other species as detection covariates?,1,76,3,8,0.4,0.81,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1111/jzo.12970,JOURNAL OF ZOOLOGY,2022,Top model had no interaction,1,86,2,63,NA,NA,NA,NA,1,NA,NA,NA,2,22,47,NA
-10.1038/s41598-022-09084-1,SCIENTIFIC REPORTS,2022,Kellner and top model did not have interaction,0,34,2,7,NA,NA,0.31,0.9,0,NA,NA,NA,2,NA,NA,NA
-10.1111/rec.13678,RESTORATION ECOLOGY,2023,Rota and # of sampling units unclear,0,NA,3,NA,0.03,0.57,NA,NA,1,-0.86,-1.34,2,2,NA,NA,NA
-10.1093/jmammal/gyab166,JOURNAL OF MAMMALOGY,2022,Pelt colors not species and excluded the interaction term so why use this model?,1,209,2,8,0.11,0.54,0.22,0.39,0,NA,NA,0,1,NA,NA,NA
-10.1098/rspb.2021.2338,PROCEEDINGS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES,2022,Twining,1,712,3,14,0.11,0.53,NA,NA,1,-2.24,0.95,3,2,NA,NA,NA
-10.1002/ece3.8227,ECOLOGY AND EVOLUTION,2021,Species were sexes/families and didn’t report complete model estimates,1,80,3,NA,0.41,0.67,NA,NA,0,NA,NA,NA,2,NA,NA,NA
-10.1093/beheco/arab104,BEHAVIORAL ECOLOGY,2021,Don’t report values of interaction intercepts,1,46,3,10,NA,NA,NA,NA,1,NA,NA,NA,3,NA,NA,NA
-10.1002/ecy.3494,ECOLOGY,2021,Kellner,1,290,3,36,NA,NA,NA,NA,1,-0.29,1.45,1,2,52,145,23
-10.1016/j.biocon.2021.109294,BIOLOGICAL CONSERVATION,2021,,1,216,4,65,NA,NA,NA,NA,0,-0.94,1.7,3,2,49,110,NA
-10.1002/eap.2393,ECOLOGICAL APPLICATIONS,2021,# of occasions not explicitly given and large parameter estimates,1,116,4,13,NA,NA,NA,NA,1,NA,NA,NA,2,NA,NA,NA
-10.1111/1365-2656.13548,JOURNAL OF ANIMAL ECOLOGY,2021,,1,330,5,17,NA,NA,NA,NA,1,0.15,1.7,7,2,NA,NA,NA
-10.1111/1365-2664.13660,JOURNAL OF APPLIED ECOLOGY,2021,Twining and optimization issues?,1,332,3,7,NA,NA,NA,NA,0,-16.79,0.575,3,2,55,78,20
-10.3354/esr01106,ENDANGERED SPECIES RESEARCH,2021,No sites with both species?? How did they get estimates?,1,30,2,45,NA,NA,NA,NA,1,-2.35,-2.35,1,2,5,11,0
-10.1111/acv.12662,ANIMAL CONSERVATION,2021,Top model had no interaction,1,84,3,60,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA
-10.1093/condor/duaa016,CONDOR,2020,Didn’t present estimates from occupancy part of model?,0,5280,3,16,NA,NA,NA,NA,0,NA,NA,NA,2,317,1215,NA
-10.3389/fevo.2020.00239,FRONTIERS IN ECOLOGY AND EVOLUTION,2020,Here results are from fine scale study,1,1800,2,10,NA,NA,NA,NA,1,NA,NA,NA,2,217,270,17
-10.1007/s10530-020-02254-0,BIOLOGICAL INVASIONS,2020,Number of sites i.e. grid cells not explicitly reported,0,NA,3,4,NA,NA,NA,NA,1,-1.42,0.72,2,2,NA,NA,NA
-10.1111/btp.12705,BIOTROPICA,2019,,1,40,4,6,0.25,0.73,NA,NA,1,-1.375,0.112,0,2,8,29,NA
-10.1111/1365-2664.13385,JOURNAL OF APPLIED ECOLOGY,2019,Rota,1,1260,4,21,NA,NA,NA,NA,1,NA,NA,2,2,NA,NA,NA
-10.1111/1365-2656.12883,JOURNAL OF ANIMAL ECOLOGY,2018,Top model had no interaction,1,800,2,58,NA,NA,NA,NA,1,NA,NA,NA,1,NA,NA,NA
-10.7554/eLife.38012,ELIFE,2018,Rota and interaction estimates/covariates not clear to me,1,1427,4,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-10.1371/journal.pone.0191730,PLOS ONE,2018,Unclear what value of interaction term is because table and text seem to differ,1,182,2,4,NA,NA,NA,NA,NA,NA,NA,NA,2,74,84,34
+DOI,Journal,Year,Notes,cameras,max_sites,max_species,max_occasions,occasion_days,psi_min,psi_max,p_min,p_max,int_covs,covs_scaled,int_min,int_max,n_int_sig,max_order,min_sites_detect,max_sites_detect,n_overlap_sites
+10.1016/j.biocon.2024.110777,BIOLOGICAL CONSERVATION,2024,ranks not species,1,172,4,11,7,0.55,0.8,0.1,0.5,1,1,0,1,3,2,NA,NA,NA
+10.1016/j.gecco.2024.e03180,GLOBAL ECOLOGY AND CONSERVATION,2024,only first survey,1,628,2,7,1,0.156,0.228,0.176,0.223,0,1,-1.21,-1.21,0,2,74,97,NA
+10.1016/j.gecco.2024.e03116,GLOBAL ECOLOGY AND CONSERVATION,2024,,1,115,5,13,5,NA,NA,NA,NA,1,1,-1,3,4,2,NA,NA,NA
+10.1016/j.gecco.2024.e03017,GLOBAL ECOLOGY AND CONSERVATION,2024,only grazing,1,349,7,13,7,NA,NA,NA,NA,1,1,-1.23,0.89,2,2,NA,NA,NA
+10.1007/s11252-024-01581-7,URBAN ECOSYSTEMS,2024,Random by city,1,381,3,4,7,0.05,0.75,NA,NA,1,1,-6.79,5.59,6,2,NA,NA,NA
+10.1093/jmammal/gyae045,JOURNAL OF MAMMALOGY,2024,,1,202,3,14,7,0.4,0.74,NA,NA,1,1,1.88,1.88,1,2,NA,NA,NA
+10.1111/oik.10577,OIKOS,2024,Twining,1,559,3,3,7,NA,NA,0.25,0.45,0,1,0.86,0.86,1,2,NA,NA,NA
+10.1002/wlb3.01197,WILDLIFE BIOLOGY,2024,Replicates were surveys not days,0,2325,2,20,NA,NA,NA,NA,NA,1,1,0.89,0.89,1,2,NA,NA,NA
+10.1002/ece3.10965,ECOLOGY AND EVOLUTION,2024,bad interaction estimate and p estimated from table,1,60,4,122,1,NA,NA,0.1,0.14,0,1,8.19,8.19,0,2,30,55,NA
+10.3390/fishes9020043,FISHES,2024,,0,3926,3,NA,NA,0.41,0.42,0.26,0.48,1,0,NA,NA,3,2,NA,NA,NA
+10.1371/journal.pone.0297053,PLOS ONE,2024,,1,706,3,31,1,0.14,0.29,0.029,0.075,0,1,NA,NA,1,2,NA,NA,NA
+10.1016/j.scitotenv.2023.169552,SCIENCE OF THE TOTAL ENVIRONMENT,2024,Avg occasions,1,238,4,NA,14,NA,NA,NA,NA,1,0,NA,NA,NA,2,NA,NA,NA
+10.1111/acv.12926,ANIMAL CONSERVATION,2024,conditional equation doesn’t make sense?,1,78,3,111,1,NA,NA,NA,NA,1,1,NA,NA,NA,2,NA,NA,NA
+10.1002/ece3.10718,ECOLOGY AND EVOLUTION,2023,Kellner,1,105,2,14,5,NA,NA,0.15,0.16,1,1,1.07,1.07,1,2,35,71,25
+10.1016/j.jaridenv.2023.105067,JOURNAL OF ARID ENVIRONMENTS,2023,psi estimated from figure; no continuous covs,1,78,2,8,5,0.25,0.75,0.11,0.23,1,1,NA,NA,NA,2,23,51,NA
+10.1016/j.cub.2023.07.064,CURRENT BIOLOGY,2023,,1,481,7,NA,NA,NA,NA,NA,NA,1,0,-2.47,1.47,16,2,NA,NA,NA
+10.1111/oik.10270,OIKOS,2023,Occasions were seasons (4),0,397,3,4,91,0.3,0.3,NA,NA,1,1,NA,NA,NA,2,NA,NA,NA
+10.1111/1365-2656.13976,JOURNAL OF ANIMAL ECOLOGY,2023,Sample size is confusing  180 * 3 yrs?,1,540,3,NA,7,NA,NA,NA,NA,1,1,-2.13,6.52,3,2,NA,NA,NA
+10.1002/ece3.10200,ECOLOGY AND EVOLUTION,2023,Species pooled,1,88,3,20,1,0.19,0.78,0.1,0.5,0,0,0.33,1.38,2,2,NA,NA,NA
+10.1086/725318,FRESHWATER SCIENCE,2023,P derived from model output; 20 min replicate searches,0,125,2,3,NA,NA,NA,0.71,0.89,1,0,-1.15,-1.15,0,2,NA,NA,NA
+10.1016/j.fooweb.2023.e00288,FOOD WEBS,2023,species pooled,1,95,4,14,7,NA,NA,0.11,0.76,1,1,-0.85,1.42,2,2,7,30,NA
+10.1002/ece3.10040,ECOLOGY AND EVOLUTION,2023,,1,97,4,NA,7,NA,NA,0.1,0.5,1,1,NA,NA,NA,2,NA,NA,NA
+10.1371/journal.pone.0284850,PLOS ONE,2023,number of sites unclear and calculated as 4 years *24,1,96,2,10,12,NA,NA,0.1,0.22,1,1,2.56,2.56,1,2,NA,NA,NA
+10.1002/ecs2.4435,ECOSPHERE,2023,one model per month?,1,117,2,21,1,NA,NA,NA,NA,1,1,-1.16,9.55,0,2,NA,NA,NA
+10.1111/1365-2656.13875,JOURNAL OF ANIMAL ECOLOGY,2023,Use marginal and conditional wrong,1,354,4,54,1,0.25,0.84,0.08,0.24,1,0,-1.99,2.87,15,4,NA,NA,NA
+10.1002/ecs2.4383,ECOSPHERE,2023,weekly detection periods and numbers are max between two models and used backward selection,1,400,8,8,7,NA,NA,NA,NA,0,1,-0.94,1.83,5,2,NA,NA,NA
+10.1093/cz/zoac093,CURRENT ZOOLOGY,2023,Occasions unclear and evidence of bad optimization,1,47,2,NA,5,NA,NA,NA,NA,0,1,2.12,2.12,0,2,11,23,NA
+10.1111/csp2.12847,CONSERVATION SCIENCE AND PRACTICE,2022,Had summer and winter models only showing design for one of them,1,117,6,37,14,NA,NA,NA,NA,1,1,NA,NA,NA,2,NA,NA,NA
+10.1038/s41598-022-20953-7,SCIENTIFIC REPORTS,2022,confusing design description and equations make no sense and massive optimization issues,1,62,3,7,15,NA,NA,NA,NA,1,1,NA,NA,NA,2,NA,NA,NA
+10.1007/s42991-022-00313-8,MAMMALIAN BIOLOGY,2022,multiple separate seasonal models and figure is wrong and weird assumptions in methods and doesn’t report actual model estimates?,1,80,2,18,1,NA,NA,NA,NA,1,1,NA,NA,NA,2,NA,NA,NA
+10.1111/jzo.13002,JOURNAL OF ZOOLOGY,2022,Had to check code to determine covariate structure,1,66,3,36,5,NA,NA,NA,NA,1,1,NA,NA,NA,2,NA,NA,NA
+10.1007/s10531-022-02445-2,BIODIVERSITY AND CONSERVATION,2022,Summarized data at array level and missing supplements? And not clear how many max species in a model,1,108,6,8,7,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA
+10.5751/ACE-02079-170120,AVIAN CONSERVATION AND ECOLOGY,2022,Rota and removal sampling,0,840,3,1,NA,NA,NA,NA,NA,0,0,-0.21,1.53,1,2,NA,NA,NA
+10.1002/ece3.8921,ECOLOGY AND EVOLUTION,2022,Supposedly used latent state of other species as detection covariates?,1,76,3,8,14,0.4,0.81,NA,NA,1,0,NA,NA,NA,2,NA,NA,NA
+10.1111/jzo.12970,JOURNAL OF ZOOLOGY,2022,Top model had no interaction,1,86,2,9,7,NA,NA,NA,NA,1,0,NA,NA,NA,2,22,47,NA
+10.1038/s41598-022-09084-1,SCIENTIFIC REPORTS,2022,Kellner and top model did not have interaction,0,34,2,7,NA,NA,NA,0.31,0.9,0,0,NA,NA,NA,2,NA,NA,NA
+10.1111/rec.13678,RESTORATION ECOLOGY,2023,Rota and # of sampling units unclear,0,NA,3,NA,NA,0.03,0.57,NA,NA,1,0,-0.86,-1.34,2,2,NA,NA,NA
+10.1093/jmammal/gyab166,JOURNAL OF MAMMALOGY,2022,Pelt colors not species and excluded the interaction term so why use this model?,1,209,2,8,15,0.11,0.54,0.22,0.39,0,1,NA,NA,0,1,NA,NA,NA
+10.1098/rspb.2021.2338,PROCEEDINGS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES,2022,Twining,1,712,3,14,1,0.11,0.53,NA,NA,1,1,-2.24,0.95,3,2,NA,NA,NA
+10.1002/ece3.8227,ECOLOGY AND EVOLUTION,2021,Species were sexes/families and didn’t report complete model estimates,1,79,3,56,1,0.41,0.67,NA,NA,0,0,NA,NA,NA,2,NA,NA,NA
+10.1093/beheco/arab104,BEHAVIORAL ECOLOGY,2021,Don’t report values of interaction intercepts,1,46,3,10,10,NA,NA,NA,NA,1,0,NA,NA,NA,3,NA,NA,NA
+10.1002/ecy.3494,ECOLOGY,2021,Kellner,1,290,3,36,1,NA,NA,NA,NA,1,1,-0.29,1.45,1,2,52,145,23
+10.1016/j.biocon.2021.109294,BIOLOGICAL CONSERVATION,2021,,1,216,4,NA,5,NA,NA,NA,NA,0,0,-0.94,1.7,3,2,49,110,NA
+10.1002/eap.2393,ECOLOGICAL APPLICATIONS,2021,# of occasions not explicitly given and large parameter estimates,1,116,4,NA,7,NA,NA,NA,NA,1,0,NA,NA,NA,2,NA,NA,NA
+10.1111/1365-2656.13548,JOURNAL OF ANIMAL ECOLOGY,2021,,1,330,5,17,8,NA,NA,NA,NA,1,0,0.15,1.7,7,2,NA,NA,NA
+10.1111/1365-2664.13660,JOURNAL OF APPLIED ECOLOGY,2021,Twining and optimization issues?,1,332,3,7,1,NA,NA,NA,NA,0,0,-16.79,0.575,3,2,55,78,20
+10.3354/esr01106,ENDANGERED SPECIES RESEARCH,2021,No sites with both species?? How did they get estimates?,1,30,2,45,1,NA,NA,NA,NA,1,0,-2.35,-2.35,1,2,5,11,0
+10.1111/acv.12662,ANIMAL CONSERVATION,2021,Top model had no interaction,1,84,3,60,1,NA,NA,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA
+10.1093/condor/duaa016,CONDOR,2020,Didn’t present estimates from occupancy part of model?,0,5280,3,16,NA,NA,NA,NA,NA,0,1,NA,NA,NA,2,317,1215,NA
+10.3389/fevo.2020.00239,FRONTIERS IN ECOLOGY AND EVOLUTION,2020,Here results are from fine scale study,1,1800,2,10,1,NA,NA,NA,NA,1,0,NA,NA,NA,2,217,270,17
+10.1007/s10530-020-02254-0,BIOLOGICAL INVASIONS,2020,Number of sites i.e. grid cells not explicitly reported; replicates were seasons (4),0,NA,3,4,91,NA,NA,NA,NA,1,1,-1.42,0.72,2,2,NA,NA,NA
+10.1111/btp.12705,BIOTROPICA,2019,,1,40,4,6,1,0.25,0.73,NA,NA,1,1,-1.375,0.112,0,2,8,29,NA
+10.1111/1365-2664.13385,JOURNAL OF APPLIED ECOLOGY,2019,Rota,1,1260,4,21,1,NA,NA,NA,NA,1,1,NA,NA,2,2,NA,NA,NA
+10.1111/1365-2656.12883,JOURNAL OF ANIMAL ECOLOGY,2018,Top model had no interaction,1,800,2,58,1,NA,NA,NA,NA,1,0,NA,NA,NA,1,NA,NA,NA
+10.7554/eLife.38012,ELIFE,2018,Rota and interaction estimates/covariates not clear to me,1,1427,4,21,1,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA
+10.1371/journal.pone.0191730,PLOS ONE,2018,Unclear what value of interaction term is because table and text seem to differ,1,182,2,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,2,74,84,34

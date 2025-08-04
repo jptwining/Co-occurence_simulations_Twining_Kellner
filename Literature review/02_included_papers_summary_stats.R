@@ -52,17 +52,17 @@ sum(!is.na(incl$n_int_sig))
 mean(incl$n_int_sig > 0, na.rm=TRUE)
 
 # Size of interactions
-sum(!is.na(incl$int_min))
+sum(!is.na(incl$int_min) & incl$covs_scaled == 1)
 max_abs_int <- cbind(abs(incl$int_min), abs(incl$int_max))
 max_abs_int <- apply(max_abs_int, 1, max)
-median(max_abs_int, na.rm=TRUE)
-range(max_abs_int, na.rm=TRUE)
+median(max_abs_int[incl$covs_scaled == 1], na.rm=TRUE)
+range(max_abs_int[incl$covs_scaled == 1], na.rm=TRUE)
 
 # Estimate size of mean interaction
 # on occupancy scale
-f1 <- -0.55
-f2 <- -0.55
-f12 <- 1.7 # <- EFFECT SIZE OF INTERACTION
+f1 <- -0.53
+f2 <- -0.53
+f12 <- 1.64 # <- EFFECT SIZE OF INTERACTION
 
 psi <- numeric(4)
 psi[1] <- exp(f1 + f2 + f12)
@@ -78,6 +78,6 @@ psi[1] + psi[2] # 60
 psi[1] + psi[3] # 60
 
 # Occupancy of species 1 | species 2 present
-psi[1] / (psi[1] + psi[3]) # 76
+psi[1] / (psi[1] + psi[3]) # 75
 # Occupancy of species 1 | species 2 absent
 psi[2] / (psi[2] + psi[4]) # 37

@@ -20,6 +20,7 @@ hist(incl$max_sites[incl$max_sites < 1000])
 median(incl$max_sites, na.rm=TRUE)
 range(incl$max_sites, na.rm=TRUE)
 mean(incl$max_sites <= 1000, na.rm=TRUE)
+mean(incl$max_sites < 500, na.rm=TRUE)
 
 # Number of occasions
 median(incl$max_occasions, na.rm=TRUE)

@@ -84,55 +84,44 @@ scenarios <- expand.grid(species = c(2,3,5),
                 sites = c(50, 100, 200, 500, 1000),
                 occasions = c(5, 10, 30),
                 psi = c(0.2, 0.6),
-                p = c(0.2, 0.6),
-                effectsize = c(0, 0.1, 0.25)
+                p = c(0.05, 0.2, 0.6),
+                effectsize = c(0.1, 0.25)
               )
 
 # Don't run this in parallel, Armadillo is doing stuff in parallel at the 
 # same time and it causes hangs
-power_analyses <- lapply(1:nrow(scenarios), function(i){
+set.seed(123)
+power_analyses <- vector("list", nrow(scenarios))
+for (i in 1:nrow(scenarios)){
   scen <- scenarios[i,]
   print(scen)
-  run_scenario(species = scen$species,
+  power_analyses[[i]] <- run_scenario(species = scen$species,
                sites = scen$sites,
                occasions = scen$occasions,
                psi = scen$psi,
                p = scen$p,
                effectsize = scen$effectsize,
-               nsim = 100)
-})
+               nsim = 200)
+  if(i %% 10 == 0){
+   print("saving")
+   saveRDS(power_analyses, "power_analyses.Rds")
+  }
+}
 
 saveRDS(power_analyses, "power_analyses.Rds")
 power_analyses <- readRDS("power_analyses.Rds")
 
-# p = 0.05 scenarios (additional scenarios requested by reviewer)
-# since we don't end up using the 0 effect size scenarios, they are
-# not included here
-scenarios_p005 <- expand.grid(species = c(2,3,5),
-                    sites = c(50, 100, 200, 500, 1000),
-                    occasions = c(5, 10, 30),
-                    psi = c(0.2, 0.6),
-                    p = 0.05,
-                    effectsize = c(0.1, 0.25)
-                  )
-
-scenarios_p005 <- scenarios_p005[order(scenarios_p005$species),]
-rownames(scenarios_p005) <- NULL
-
-power_analyses_p005 <- lapply(1:nrow(scenarios_p005), function(i){
-  scen <- scenarios_p005[i,]
-  print(scen)
-  run_scenario(species = scen$species,
-               sites = scen$sites,
-               occasions = scen$occasions,
-               psi = scen$psi,
-               p = scen$p,
-               effectsize = scen$effectsize,
-               nsim = 100)
-})
-
-saveRDS(power_analyses_p005, "power_analyses_p005.Rds")
-power_analyses_p005 <- readRDS("power_analyses_p005.Rds")
+# Re-simulate one scenario that seems strange
+scen_prob <- scenarios[358,]
+set.seed(1)
+power_analysis_prob <- run_scenario(species = scen_prob$species,
+               sites = scen_prob$sites,
+               occasions = scen_prob$occasions,
+               psi = scen_prob$psi,
+               p = scen_prob$p,
+               effectsize = scen_prob$effectsize,
+               nsim = 200)
+# this one results in too many SE=NaN models, best to just remove it from output
 
 
 # Figures
@@ -143,15 +132,8 @@ power_est <- lapply(power_analyses, function(x){
 power_est <- do.call(rbind, power_est)
 
 power_est <- cbind(scenarios, power_est)
-
-power_est_05 <- lapply(power_analyses_p005, function(x){
-  s <- summary(x)
-  s[s$Parameter == "[sp1:sp2] (Intercept)", c("Power", "Type S", "Type M")]
-})
-power_est_05 <- do.call(rbind, power_est_05)
-power_est_05 <- cbind(scenarios_p005, power_est_05)
-
-power_est <- rbind(power_est, power_est_05)
+# removing the bad one
+power_est <- power_est[-c(358:359),]
 
 library(ggplot2)
 library(cowplot)
@@ -166,9 +148,11 @@ pl2_1 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
-  ggtitle("Species = 2, Effect size = 0.1")
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='inside',
+        legend.position.inside=c(0.9, 0.12),
+        legend.key.size = unit(0.3, "cm"), legend.background=element_blank()) +
+  ggtitle("(A) Species = 2, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==2,]
 dat_sub$occasions <- factor(dat_sub$occasions)
@@ -179,11 +163,11 @@ pl2_2 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
   ggtitle("Species = 2, Effect size = 0.25")
 
-png("Power_2_species.png", height=9, width=6, units='in', res=300)
+tiff("Power_2_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
 plot_grid(pl2_1, pl2_2, nrow=2)
 dev.off()
 
@@ -197,9 +181,9 @@ pl3_1 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
-  ggtitle("Species = 3, Effect size = 0.1")
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
+  ggtitle("(B) Species = 3, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==3,]
 dat_sub$occasions <- factor(dat_sub$occasions)
@@ -210,11 +194,11 @@ pl3_2 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
   ggtitle("Species = 3, Effect size = 0.25")
 
-png("Power_3_species.png", height=9, width=6, units='in', res=300)
+tiff("Power_3_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
 plot_grid(pl3_1, pl3_2, nrow=2)
 dev.off()
 
@@ -228,9 +212,9 @@ pl5_1 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank(), strip.background=element_rect("white")) +
-  ggtitle("Species = 5, Effect size = 0.1")
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
+  ggtitle("(C) Species = 5, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==5,]
 dat_sub$occasions <- factor(dat_sub$occasions)
@@ -241,11 +225,11 @@ pl5_2 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank(), strip.background=element_rect("white")) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
   ggtitle("Species = 5, Effect size = 0.25")
 
-png("Power_5_species.png", height=9, width=6, units='in', res=300)
+tiff("Power_5_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
 plot_grid(pl5_1, pl5_2, nrow=2)
 dev.off()
 
@@ -261,11 +245,13 @@ pl2_1 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='inside',
+        legend.position.inside=c(0.9, 0.2),
+        legend.key.size = unit(0.3, "cm"), legend.background=element_blank()) +
   ylab("Type M error") +
-  ylim(1, 3.5) +
-  ggtitle("Species = 2, Effect size = 0.1")
+  coord_cartesian(ylim=c(1, 3.5)) +
+  ggtitle("(A) Species = 2, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==2,]
 dat_sub$occasions <- factor(dat_sub$occasions)
@@ -276,17 +262,17 @@ pl2_2 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
   ylab("Type M error") +
-  ylim(1, 3.5) +
+  coord_cartesian(ylim=c(1, 3.5)) +
   ggtitle("Species = 2, Effect size = 0.25")
 
-png("TypeM_2_species.png", height=9, width=6, units='in', res=300)
+tiff("TypeM_2_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
 plot_grid(pl2_1, pl2_2, nrow=2)
 dev.off()
 
-# Species = 2
+# Species = 3
 dat_sub <- power_est[power_est$effectsize == 0.1&power_est$species ==3,]
 dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
@@ -296,11 +282,11 @@ pl3_1 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
   ylab("Type M error") +
-  ylim(1, 3.5) +
-  ggtitle("Species = 3, Effect size = 0.1")
+  coord_cartesian(ylim=c(1, 3.5)) +
+  ggtitle("(B) Species = 3, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==3,]
 dat_sub$occasions <- factor(dat_sub$occasions)
@@ -311,13 +297,13 @@ pl3_2 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
   ylab("Type M error") +
-  ylim(1, 3.5) +
+  coord_cartesian(ylim=c(1, 3.5)) +
   ggtitle("Species = 3, Effect size = 0.25")
 
-png("TypeM_3_species.png", height=9, width=6, units='in', res=300)
+tiff("TypeM_3_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
 plot_grid(pl3_1, pl3_2, nrow=2)
 dev.off()
 
@@ -331,11 +317,11 @@ pl5_1 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
   ylab("Type M error") +
-  ylim(1, 5) +
-  ggtitle("Species = 5, Effect size = 0.1")
+  coord_cartesian(ylim=c(1, 5)) +
+  ggtitle("(C) Species = 5, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==5,]
 dat_sub$occasions <- factor(dat_sub$occasions)
@@ -346,13 +332,13 @@ pl5_2 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
-  theme_bw(base_size=14) +
-  theme(panel.grid=element_blank()) +
+  theme_bw(base_size=12) +
+  theme(panel.grid=element_blank(), legend.position='none') +
   ylab("Type M error") +
-  ylim(1, 5) +
+  coord_cartesian(ylim=c(1, 5)) +
   ggtitle("Species = 5, Effect size = 0.25")
 
-png("TypeM_5_species.png", height=9, width=6, units='in', res=300)
+tiff("TypeM_5_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
 plot_grid(pl5_1, pl5_2, nrow=2)
 dev.off()
 
@@ -366,7 +352,7 @@ dev.off()
 set.seed(123)
 scenarios_nsims <- expand.grid(species = 2, sites = c(200, 500),
                          occasions = 5, psi = 0.2, p = 0.2,
-                         effectsize = 0.1, sims = c(25, 50, 100, 500, 1000, 5000))
+                         effectsize = 0.1, sims = c(25, 50, 100, 200, 500, 1000, 5000))
 
 power_analyses_nsims <- lapply(1:nrow(scenarios_nsims), function(i){
   scen <- scenarios_nsims[i,]
@@ -390,16 +376,22 @@ power_est <- lapply(power_analyses_nsims, function(x){
 power_est <- do.call(rbind, power_est)
 power_est <- cbind(power_est, scenarios_nsims)
 
-ggplot(data = power_est, aes(x = sims, y = Power)) +
+s1_a <- ggplot(data = power_est, aes(x = sims, y = Power)) +
   geom_point() +
   geom_line() +
-  facet_wrap("sites")
+  facet_wrap("sites") +
+  theme_bw(base_size=12) +
+  geom_vline(xintercept=200, linetype=2) +
+  theme(panel.grid=element_blank())
 
-ggsave("power_vs_nsims.png")
-
-ggplot(data = power_est, aes(x = sims, y = `Type M`)) +
+s1_b <- ggplot(data = power_est, aes(x = sims, y = `Type M`)) +
   geom_point() +
   geom_line() +
-  facet_wrap("sites")
+  facet_wrap("sites") + 
+  theme_bw(base_size=12) +
+  geom_vline(xintercept=200, linetype=2) +
+  theme(panel.grid=element_blank())
 
-ggsave("typeM_vs_nsims.png")
+png("Figure_S1.png", height=7, width=7, units='in', res=300)
+plot_grid(s1_a, s1_b, nrow=2)
+dev.off()

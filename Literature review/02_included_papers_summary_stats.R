@@ -50,9 +50,11 @@ mean(incl$int_covs, na.rm=TRUE)
 
 # Significant interactions
 sum(!is.na(incl$n_int_sig))
+sum(!is.na(incl$n_int_sig) & incl$n_int_sig)
 mean(incl$n_int_sig > 0, na.rm=TRUE)
 
 # Size of interactions
+sum(!is.na(incl$int_min))
 sum(!is.na(incl$int_min) & incl$covs_scaled == 1)
 max_abs_int <- cbind(abs(incl$int_min), abs(incl$int_max))
 max_abs_int <- apply(max_abs_int, 1, max)

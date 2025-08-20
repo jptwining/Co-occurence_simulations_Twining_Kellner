@@ -1,5 +1,6 @@
 library(unmarked)
 
+setwd('C:/Users/twininjo/Documents/R/Multi-species Rota simulations')
 # species: 2, 3, 5
 # sites  : 50, 100, 200, 500, 1000
 # occasions: 5, 10, 30
@@ -144,13 +145,16 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl2_1 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
+  ylab("power")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
+  scale_y_continuous(limits=c(0,1), breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='inside',
-        legend.position.inside=c(0.9, 0.12),
+        legend.position.inside=c(0.875, 0.1),
         legend.key.size = unit(0.3, "cm"), legend.background=element_blank()) +
   ggtitle("(A) Species = 2, Effect size = 0.1")
 
@@ -159,15 +163,18 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl2_2 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
+  ylab("power")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
+  scale_y_continuous(limits=c(0,1), breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
   ggtitle("Species = 2, Effect size = 0.25")
 
-tiff("Power_2_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
+tiff("Power_2_species.tiff", height=11, width=5, units='in', res=300, compression='lzw')
 plot_grid(pl2_1, pl2_2, nrow=2)
 dev.off()
 
@@ -177,12 +184,15 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl3_1 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
+  ylab("power")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
+  scale_y_continuous(limits=c(0,1), breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
   ggtitle("(B) Species = 3, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==3,]
@@ -190,15 +200,18 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl3_2 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
+  ylab("power")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
+  scale_y_continuous(limits=c(0,1), breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
   ggtitle("Species = 3, Effect size = 0.25")
 
-tiff("Power_3_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
+tiff("Power_3_species.tiff", height=11, width=5, units='in', res=300, compression='lzw')
 plot_grid(pl3_1, pl3_2, nrow=2)
 dev.off()
 
@@ -208,12 +221,15 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl5_1 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
+  ylab("power")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
+  scale_y_continuous(limits=c(0,1), breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
   ggtitle("(C) Species = 5, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==5,]
@@ -221,15 +237,18 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl5_2 <- ggplot(data = dat_sub, aes(x = sites, y=Power)) +
+  ylab("power")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=0.8, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
+  scale_y_continuous(limits=c(0,1), breaks = c(0, 0.25, 0.5, 0.75, 1.0)) +
   ggtitle("Species = 5, Effect size = 0.25")
 
-tiff("Power_5_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
+tiff("Power_5_species.tiff", height=11, width=5, units='in', res=300, compression='lzw')
 plot_grid(pl5_1, pl5_2, nrow=2)
 dev.off()
 
@@ -241,16 +260,18 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl2_1 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
+  ylab("type M error")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='inside',
-        legend.position.inside=c(0.9, 0.2),
+        legend.position.inside=c(0.15, 0.225),
         legend.key.size = unit(0.3, "cm"), legend.background=element_blank()) +
-  ylab("Type M error") +
-  coord_cartesian(ylim=c(1, 3.5)) +
+  coord_cartesian(ylim=c(1, 4.5)) +
+  scale_y_continuous(breaks = c(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5)) +
   ggtitle("(A) Species = 2, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==2,]
@@ -258,17 +279,19 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl2_2 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
+  ylab("type M error")+
+  xlab("number of sites sampled") +
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
-  ylab("Type M error") +
-  coord_cartesian(ylim=c(1, 3.5)) +
+  coord_cartesian(ylim=c(1, 4.5)) +
+  scale_y_continuous(breaks = c(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5)) +
   ggtitle("Species = 2, Effect size = 0.25")
 
-tiff("TypeM_2_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
+tiff("TypeM_2_species.tiff", height=11, width=5, units='in', res=300, compression='lzw')
 plot_grid(pl2_1, pl2_2, nrow=2)
 dev.off()
 
@@ -278,14 +301,16 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl3_1 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
+  ylab("type M error")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
-  ylab("Type M error") +
-  coord_cartesian(ylim=c(1, 3.5)) +
+  coord_cartesian(ylim=c(1, 4.5)) +
+  scale_y_continuous(breaks = c(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5)) +
   ggtitle("(B) Species = 3, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==3,]
@@ -293,17 +318,19 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl3_2 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
+  ylab("type M error")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
-  ylab("Type M error") +
-  coord_cartesian(ylim=c(1, 3.5)) +
+  coord_cartesian(ylim=c(1, 4.5)) +
+  scale_y_continuous(breaks = c(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5)) +
   ggtitle("Species = 3, Effect size = 0.25")
 
-tiff("TypeM_3_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
+tiff("TypeM_3_species.tiff", height=11, width=5, units='in', res=300, compression='lzw')
 plot_grid(pl3_1, pl3_2, nrow=2)
 dev.off()
 
@@ -313,14 +340,16 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl5_1 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
+  ylab("type M error")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
-  ylab("Type M error") +
-  coord_cartesian(ylim=c(1, 5)) +
+  coord_cartesian(ylim=c(1, 4.5)) +
+  scale_y_continuous(breaks = c(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5)) +
   ggtitle("(C) Species = 5, Effect size = 0.1")
 
 dat_sub <- power_est[power_est$effectsize == 0.25&power_est$species ==5,]
@@ -328,17 +357,19 @@ dat_sub$occasions <- factor(dat_sub$occasions)
 dat_sub$psi <- factor(paste0("psi = ",dat_sub$psi))
 dat_sub$p <- factor(paste0("p = ", dat_sub$p))
 pl5_2 <- ggplot(data = dat_sub, aes(x = sites, y=`Type M`)) +
+  ylab("type M error")+
+  xlab("number of sites sampled") + 
   geom_point(aes(col=occasions)) +
   geom_line(aes(col=occasions)) +
   facet_grid(rows=vars(p), cols=vars(psi)) +
   geom_hline(yintercept=1, linetype=2) + 
   theme_bw(base_size=12) +
   theme(panel.grid=element_blank(), legend.position='none') +
-  ylab("Type M error") +
-  coord_cartesian(ylim=c(1, 5)) +
+  coord_cartesian(ylim=c(1, 4.5)) +
+  scale_y_continuous(breaks = c(0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5)) +
   ggtitle("Species = 5, Effect size = 0.25")
 
-tiff("TypeM_5_species.tiff", height=9, width=6, units='in', res=300, compression='lzw')
+tiff("TypeM_5_species.tiff", height=11, width=5, units='in', res=300, compression='lzw')
 plot_grid(pl5_1, pl5_2, nrow=2)
 dev.off()
 
